@@ -1,6 +1,6 @@
 package it.mollik.yawapi.rs.model;
 
-public enum BookGenres {
+public enum BookGenre {
     
     THRILLER,
     NOIR,

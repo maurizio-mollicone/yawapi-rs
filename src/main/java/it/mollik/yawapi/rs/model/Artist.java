@@ -13,10 +13,13 @@ public class Artist {
     @Column(name = "artist_id")
     private Integer artistId;
 
-    @Column(name = "artist_name")
+    @Column(name = "artist_name", length = 500, nullable = false)
     private String artistName;
 
-    @Column(name = "artist_country")
+    @Column(name = "artist_bio", length = 1000)
+    private String artistBio;
+
+    @Column(name = "artist_country", nullable = false)
     private Locale.IsoCountryCode artistCountry;
 
     public Integer getArtistId() {
