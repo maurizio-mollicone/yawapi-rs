@@ -1,11 +1,31 @@
-### Java Spring template project
+# Yet Another Web API - JS Edition
 
-This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+Base project for a REST API based on node.js
 
-Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/spring).
+## Requirements
 
-### CI/CD with Auto DevOps
+1. Docker
+2. MariaDB
+3. Spring Boot 2.7.0 (springs-security, spring-web, spring-data)
+4. Java 11
+5. Postman
 
-This template is compatible with [Auto DevOps](https://docs.gitlab.com/ee/topics/autodevops/).
+## Clone from GitLab
 
-If Auto DevOps is not already enabled for this project, you can [turn it on](https://docs.gitlab.com/ee/topics/autodevops/#enabling-auto-devops) in the project settings.
+Clone project using:
+
+```
+git clone https://github.com/maurizio-mollicone/yawapi-rs.git
+```
+
+## Setup MariaDB Container
+
+
+```
+docker run --detach --name mariadb --env MARIADB_USER=yar --env MARIADB_PASSWORD=12345678 --env MARIADB_ROOT_PASSWORD=12345678 mariadb:latest
+```
+## Run
+
+```
+gg
+```
