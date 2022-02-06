@@ -10,7 +10,7 @@ Base project for a REST API based on node.js
 4. Java 11
 5. Postman
 
-## Clone from GitLab
+## Clone from GitHub
 
 Clone project using:
 
