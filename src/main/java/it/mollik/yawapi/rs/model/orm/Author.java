@@ -1,5 +1,6 @@
 package it.mollik.yawapi.rs.model.orm;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;

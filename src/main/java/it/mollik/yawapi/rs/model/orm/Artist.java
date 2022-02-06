@@ -1,5 +1,6 @@
 package it.mollik.yawapi.rs.model.orm;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Artist {
+public class Artist implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,6 @@
 package it.mollik.yawapi.rs.model.orm;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 import it.mollik.yawapi.rs.model.ItemType;
 
 @MappedSuperclass
-public class Item {
+public class Item implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
