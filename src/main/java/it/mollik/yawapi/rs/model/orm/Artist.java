@@ -1,8 +1,10 @@
-package it.mollik.yawapi.rs.model;
+package it.mollik.yawapi.rs.model.orm;
 
 import java.util.Locale;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -10,6 +12,7 @@ import javax.persistence.MappedSuperclass;
 public class Artist {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "artist_id")
     private Integer artistId;
 
@@ -20,7 +23,7 @@ public class Artist {
     private String artistBio;
 
     @Column(name = "artist_country", nullable = false)
-    private Locale.IsoCountryCode artistCountry;
+    private Locale artistCountry;
 
     public Integer getArtistId() {
         return artistId;
@@ -38,11 +41,11 @@ public class Artist {
         this.artistName = artistName;
     }
 
-    public Locale.IsoCountryCode getArtistCountry() {
+    public Locale getArtistCountry() {
         return artistCountry;
     }
 
-    public void setArtistCountry(Locale.IsoCountryCode artistCountry) {
+    public void setArtistCountry(Locale artistCountry) {
         this.artistCountry = artistCountry;
     }
 

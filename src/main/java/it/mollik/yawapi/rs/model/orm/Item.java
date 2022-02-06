@@ -1,15 +1,20 @@
-package it.mollik.yawapi.rs.model;
+package it.mollik.yawapi.rs.model.orm;
 
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import it.mollik.yawapi.rs.model.ItemType;
 
 @MappedSuperclass
 public class Item {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_id")
     private Integer itemId;
    

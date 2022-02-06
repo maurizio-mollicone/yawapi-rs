@@ -1,4 +1,4 @@
-package it.mollik.yawapi.rs.model;
+package it.mollik.yawapi.rs.model.orm;
 
 import java.util.Set;
 
@@ -6,8 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import it.mollik.yawapi.rs.model.BookGenre;
+
 import javax.persistence.JoinColumn;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="itemId")
 @Entity(name = "book")
 public class Book extends Item {
 
@@ -20,7 +27,7 @@ public class Book extends Item {
     @ManyToMany
     @JoinTable(name = "book_authors", joinColumns = @JoinColumn(name = "item_id"), 
         inverseJoinColumns = @JoinColumn(name = "artist_id"))
-    private Set<Writer> authors;
+    private Set<Author> authors;
 
     public String getIsbnCode() {
         return isbnCode;
@@ -38,11 +45,11 @@ public class Book extends Item {
         this.bookGenre = bookGenre;
     }
      
-    public Set<Writer> getAuthors() {
+    public Set<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<Writer> authors) {
+    public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
 }

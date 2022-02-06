@@ -2,12 +2,23 @@ package it.mollik.yawapi.rs.model;
 
 public enum BookGenre {
     
-    THRILLER,
-    NOIR,
-    COMEDY,
-    TRAGEDY,
-    NOVEL,
-    ROMANCE,
-    COMICS,
-    ESSAY;
+    THRILLER("Thriller"),
+    NOIR("Noir"),
+    COMEDY("Comedy"),
+    TRAGEDY("Tragedy"),
+    NOVEL("Novel"),
+    ROMANCE("Romance"),
+    COMICS("Comics"),
+    ESSAY("Essay");
+
+    public final String genre;
+
+    private BookGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @Override 
+    public String toString() { 
+        return this.genre; 
+    }
 }
