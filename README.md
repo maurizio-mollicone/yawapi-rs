@@ -1,6 +1,6 @@
-# Yet Another Web API - JS Edition
+# Yet Another Web API - Spring Boot Edition
 
-Base project for a REST API based on node.js
+Base project for a REST API based on spring-boot
 
 ## Requirements
 
