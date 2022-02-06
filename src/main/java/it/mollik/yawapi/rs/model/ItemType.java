@@ -6,14 +6,24 @@ public enum ItemType {
     ALBUM("Album"),
     SONG("Song");
 
-    public final String itemType;
 
-    private ItemType(String itemType) {
-        this.itemType = itemType;
+    private String itemTypeValue;
+
+    public String getItemTypeValue() {
+        return itemTypeValue;
     }
 
-    @Override 
-    public String toString() { 
-        return this.itemType; 
+    public void setItemTypeValue(String itemTypeValue) {
+        this.itemTypeValue = itemTypeValue;
     }
+
+    private ItemType(String itemTypeValue) {
+        this.itemTypeValue = itemTypeValue;
+    }
+
+    @Override
+    public String toString() {
+        return this.itemTypeValue;
+    }
+
 }

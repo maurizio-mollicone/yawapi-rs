@@ -1,12 +1,12 @@
 package it.mollik.yawapi.rs.model.orm;
 
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="artistId")
@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Author extends Artist {
     
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnore
     private Set<Book> books;
 
     public Set<Book> getBooks() {
@@ -23,5 +24,6 @@ public class Author extends Artist {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
+
 
 }

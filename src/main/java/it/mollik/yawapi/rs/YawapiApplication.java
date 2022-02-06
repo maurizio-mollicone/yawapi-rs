@@ -15,7 +15,7 @@ public class YawapiApplication {
 
 
 	@GetMapping("/")
-	String home() {
+	public String home() {
 		return "Spring is here!";
 	}
 

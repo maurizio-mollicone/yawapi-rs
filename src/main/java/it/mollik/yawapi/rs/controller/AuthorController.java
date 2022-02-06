@@ -28,19 +28,24 @@ public class AuthorController {
 
     @GetMapping(path = "/author/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Author> list() throws EntityNotFoundException {
-
+        logger.info("/author/list");
         return this.authorService.list();
     }
 
     @PutMapping(path = "/author/find", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<Author> findByName(@RequestBody AuthorRequest authorRequest) throws EntityNotFoundException {
-        return this.authorService.findByName(authorRequest.getAuthors().get(0).getArtistName());
+    public List<Author> findByName(@RequestBody AuthorRequest request) throws EntityNotFoundException {
+        logger.info("/author/find {}" , request);
+        List<Author> result = this.authorService.findByName(request.getAuthors().get(0).getArtistName());
+        logger.info("/author/find OK {} elemts" , result.size());
+        return result;
     }
 
     @PostMapping(path = "/author/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Author create(@RequestBody AuthorRequest authorRequest) {
-        return this.authorService.create(authorRequest.getAuthors().get(0).getArtistName(), authorRequest.getAuthors().get(0).getArtistCountry());
+    public Author create(@RequestBody AuthorRequest request) {
+        Author result = this.authorService.create(request.getAuthors().get(0).getArtistName(), request.getAuthors().get(0).getArtistCountry());
+        logger.info("/author/created {}", result);
+        return result;
     }
 
 }

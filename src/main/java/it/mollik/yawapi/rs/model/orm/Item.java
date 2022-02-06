@@ -2,12 +2,18 @@ package it.mollik.yawapi.rs.model.orm;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.commons.lang3.StringUtils;
 
 import it.mollik.yawapi.rs.model.ItemType;
 
@@ -71,6 +77,18 @@ public class Item implements Serializable {
         this.itemType = itemType;
     }
 
-    
+    @Override
+    public String toString() {
+        
+        String item = new StringJoiner(StringUtils.EMPTY).add(this.getTitle()).toString();
+        String result = item;
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            result = mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            result = item;
+        }
+        return result;
+    }
 
 }

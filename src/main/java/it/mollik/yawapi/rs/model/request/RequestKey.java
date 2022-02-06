@@ -2,7 +2,11 @@ package it.mollik.yawapi.rs.model.request;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.StringJoiner;
 import java.util.UUID;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,7 +22,7 @@ public class RequestKey implements Serializable{
     public RequestKey() {
         this("en", "0.0.0.0", StringUtils.EMPTY);
     }
-    
+
     public RequestKey(String language, String ipAddress, String jsessionId) {
         super();
         this.correlationId = UUID.randomUUID();
@@ -66,4 +70,17 @@ public class RequestKey implements Serializable{
         this.jsessionId = jsessionId;
     }
     
+    @Override
+    public String toString() {
+        
+        String item = new StringJoiner(StringUtils.EMPTY).add(this.getCorrelationId().toString()).toString();
+        String result = item;
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            result = mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            result = item;
+        }
+        return result;
+    }
 }
