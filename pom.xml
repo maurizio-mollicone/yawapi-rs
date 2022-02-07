@@ -143,6 +143,10 @@
 		</dependency> -->
 	</dependencies>
 
+	<activeProfiles>
+		<activeProfile>github</activeProfile>
+	</activeProfiles>
+
 	<build>
 		<plugins>
 			<plugin>
