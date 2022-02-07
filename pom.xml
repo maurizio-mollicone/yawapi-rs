@@ -199,7 +199,7 @@
 				</repository>
 				<repository>
 					<id>github</id>
-					<url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+					<url>https://maven.pkg.github.com/maurizio-mollicone/github</url>
 					<snapshots>
 						<enabled>true</enabled>
 					</snapshots>
@@ -215,4 +215,5 @@
 			<password>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 </password>
 		</server>
 	</servers>
+	
 </project>
