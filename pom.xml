@@ -193,7 +193,7 @@
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/maurizio-mollicone/awapi-rs</url>
+      <url>https://maven.pkg.github.com/maurizio-mollicone/awapi.rs</url>
     </repository>
   </distributionManagement>
 </project>
