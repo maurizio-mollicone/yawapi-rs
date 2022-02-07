@@ -2,9 +2,6 @@
 
 Example output of REST API at http://localhost:8080:
 
-
-ao
-
 .request
 include::../../../target/generated-snippets/home/http-request.adoc[]
 
