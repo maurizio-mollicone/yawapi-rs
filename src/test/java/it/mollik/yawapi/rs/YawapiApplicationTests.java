@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(value = "test")
 public class YawapiApplicationTests {
@@ -22,6 +23,7 @@ public class YawapiApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		
 	}
 
 	@Autowired
@@ -33,4 +35,6 @@ public class YawapiApplicationTests {
 		String body = this.restTemplate.withBasicAuth(this.userName, this.password).getForObject("/", String.class);
 		assertThat(body).isEqualTo("Spring is here!");
 	}
+
+	
 }
