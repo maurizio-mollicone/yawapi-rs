@@ -1,11 +1,14 @@
-= Spring REST Docs Example
+= JaWAPI.rs API 
 
-Example output of REST API at http://localhost:8080:
+Base documentation of JaWAPI.rs API at http://localhost:8080:
 
-.request
+*request*
 include::../../../target/generated-snippets/home/http-request.adoc[]
 
-.response
+*response*
 include::../../../target/generated-snippets/home/http-response.adoc[]
+
+*Sample invocation*
+include::../../../target/generated-snippets/home/curl-request.adoc[]
 
 Easy peasy. Lemon squeezy.
