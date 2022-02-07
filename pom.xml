@@ -211,8 +211,8 @@
 	<servers>
 		<server>
 			<id>github</id>
-			<username>USERNAME</username>
-			<password>TOKEN</password>
+			<username>maurizio-mollicone</username>
+			<password>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 </password>
 		</server>
 	</servers>
 </project>
