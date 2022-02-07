@@ -29,8 +29,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn --batch-mode --update-snapshots clean install -Dmaven.test.skip=true
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -Dmaven.test.skip=true
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Package
+        path: staging
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
