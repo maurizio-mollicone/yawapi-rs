@@ -16,6 +16,7 @@ public class YawapiApplication {
 
 	@GetMapping("/")
 	public String home() {
+		LOG.info("Spring is here");
 		return "Spring is here!";
 	}
 

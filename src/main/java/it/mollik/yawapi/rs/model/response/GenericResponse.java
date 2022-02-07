@@ -1,12 +1,9 @@
 package it.mollik.yawapi.rs.model.response;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringJoiner;
 
 import org.apache.commons.lang3.StringUtils;
 
-import it.mollik.yawapi.rs.model.orm.Author;
 import it.mollik.yawapi.rs.model.request.GenericRequest;
 import it.mollik.yawapi.rs.model.request.RequestKey;
 

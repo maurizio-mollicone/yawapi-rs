@@ -5,9 +5,6 @@ import java.util.Date;
 import java.util.StringJoiner;
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.lang3.StringUtils;
 
 public class RequestKey implements Serializable{
