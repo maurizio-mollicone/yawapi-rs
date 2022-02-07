@@ -10,9 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.lang3.StringUtils;
 
 @MappedSuperclass
@@ -31,6 +28,15 @@ public class Artist implements Serializable{
 
     @Column(name = "artist_country", nullable = false)
     private Locale artistCountry;
+
+    public Artist() {
+        this(StringUtils.EMPTY, Locale.ITALY);
+    }
+
+    public Artist(String name, Locale country) {
+        this.artistName = name;
+        this.artistCountry = country;
+    }
 
     public Integer getArtistId() {
         return artistId;
@@ -58,14 +64,7 @@ public class Artist implements Serializable{
 
     @Override
     public String toString() {
-        String item = new StringJoiner(StringUtils.EMPTY).add(this.getArtistName()).toString();
-        String result = item;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            result = mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            result = item;
-        }
-        return result;
+        String id = this.getArtistId() != null ? this.getArtistId().toString() : StringUtils.EMPTY;
+        return new StringJoiner(StringUtils.EMPTY).add("Artist: [").add("artistId: ").add(id).add(", name: ").add(this.getArtistName()).add("]").toString();
     }
 }

@@ -20,4 +20,6 @@ public interface AuthorService {
     public Author create(String authorName, Locale country);
 
     public Author save(Author author);
+    
+    public void delete(Integer authorId) throws EntityNotFoundException;
 }

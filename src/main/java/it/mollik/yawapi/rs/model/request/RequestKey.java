@@ -73,14 +73,11 @@ public class RequestKey implements Serializable{
     @Override
     public String toString() {
         
-        String item = new StringJoiner(StringUtils.EMPTY).add(this.getCorrelationId().toString()).toString();
-        String result = item;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            result = mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            result = item;
-        }
-        return result;
+        return new StringJoiner(StringUtils.EMPTY).add(this.getClass().getName()).add(" [ correlationId: ").add(getCorrelationId().toString())
+            .add(", requestId: ").add(getRequestId().toString())
+            .add(", timestamp: ").add(Long.toString(getTimestamp().getTime()))
+            .add(", language: ").add(getLanguage())
+            .add("]").toString();
+
     }
 }

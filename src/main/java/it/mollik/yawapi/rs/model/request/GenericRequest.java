@@ -3,9 +3,6 @@ package it.mollik.yawapi.rs.model.request;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.lang3.StringUtils;
 
 public class GenericRequest implements Serializable {
@@ -15,7 +12,11 @@ public class GenericRequest implements Serializable {
     public GenericRequest() {
         this.requestKey = new RequestKey();
     }
-    
+
+    public GenericRequest(RequestKey requestKey) {
+        this.requestKey = requestKey;
+    }
+
     public RequestKey getRequestKey() {
         return requestKey;
     }
@@ -26,15 +27,6 @@ public class GenericRequest implements Serializable {
 
     @Override
     public String toString() {
-        
-        String item = new StringJoiner(StringUtils.EMPTY).add(this.getRequestKey().getCorrelationId().toString()).toString();
-        String result = item;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            result = mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            result = item;
-        }
-        return result;
+        return new StringJoiner(StringUtils.EMPTY).add(this.getClass().getName()).add(" [ ").add(this.getRequestKey().toString()).add("]").toString();
     }
 }

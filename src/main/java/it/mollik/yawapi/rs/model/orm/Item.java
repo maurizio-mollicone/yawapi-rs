@@ -78,17 +78,9 @@ public class Item implements Serializable {
     }
 
     @Override
-    public String toString() {
-        
-        String item = new StringJoiner(StringUtils.EMPTY).add(this.getTitle()).toString();
-        String result = item;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            result = mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            result = item;
-        }
-        return result;
+    public String toString() {        
+        String id = this.getItemId() != null ? this.getItemId().toString() : StringUtils.EMPTY;
+        return new StringJoiner(StringUtils.EMPTY).add("Item [").add("itemId: ").add(id).add(", title: ").add(this.getTitle()).add("]").toString();
     }
 
 }
