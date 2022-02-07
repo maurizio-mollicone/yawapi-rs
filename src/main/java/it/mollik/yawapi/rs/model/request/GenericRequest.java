@@ -9,6 +9,12 @@ public class GenericRequest implements Serializable {
     
     private RequestKey requestKey;
 
+    private int pageOffset;
+
+    
+
+    private int pageSize;
+
     public GenericRequest() {
         this.requestKey = new RequestKey();
     }
@@ -17,6 +23,22 @@ public class GenericRequest implements Serializable {
         this.requestKey = requestKey;
     }
 
+    public int getPageOffset() {
+        return pageOffset;
+    }
+
+    public void setPageOffset(int pageOffset) {
+        this.pageOffset = pageOffset;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+    
     public RequestKey getRequestKey() {
         return requestKey;
     }

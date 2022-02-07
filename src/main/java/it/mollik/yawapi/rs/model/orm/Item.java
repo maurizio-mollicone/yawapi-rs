@@ -12,8 +12,6 @@ import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang3.StringUtils;
 
-import it.mollik.yawapi.rs.model.ItemType;
-
 @MappedSuperclass
 public class Item implements Serializable {
     
@@ -30,8 +28,6 @@ public class Item implements Serializable {
     @Column(name = "year")
     private Date year;
     
-    @Column(name = "item_type")
-    private ItemType itemType;
 
     public Integer getId() {
         return id;
@@ -65,13 +61,6 @@ public class Item implements Serializable {
         this.year = year;
     }
 
-    public ItemType getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
-    }
 
     @Override
     public String toString() {        
