@@ -12,6 +12,8 @@ import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.mollik.yawapi.rs.model.ItemStatus;
+
 @MappedSuperclass
 public class Item implements Serializable {
     
@@ -28,6 +30,7 @@ public class Item implements Serializable {
     @Column(name = "year")
     private Date year;
     
+    private ItemStatus status;
 
     public Integer getId() {
         return id;
@@ -62,10 +65,26 @@ public class Item implements Serializable {
     }
 
 
+    /**
+     * @return ItemStatus return the status
+     */
+    public ItemStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(ItemStatus status) {
+        this.status = status;
+    }
+    
     @Override
     public String toString() {        
         String itemId = this.getId() != null ? this.getId().toString() : StringUtils.EMPTY;
         return new StringJoiner(StringUtils.EMPTY).add("Item [").add("itemId: ").add(itemId).add(", title: ").add(this.getTitle()).add("]").toString();
     }
+
+
 
 }
