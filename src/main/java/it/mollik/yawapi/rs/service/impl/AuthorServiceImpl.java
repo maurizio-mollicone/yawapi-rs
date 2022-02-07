@@ -1,6 +1,7 @@
 package it.mollik.yawapi.rs.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import it.mollik.yawapi.rs.exceptions.EntityNotFoundException;
+import it.mollik.yawapi.rs.model.EntityStatus;
 import it.mollik.yawapi.rs.model.orm.Author;
 import it.mollik.yawapi.rs.repository.AuthorRepository;
 import it.mollik.yawapi.rs.service.AuthorService;
@@ -61,6 +63,9 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author create(String authorName, Locale country) {
         Author author = new Author(authorName, country);
+        Date now = new Date();
+        author.setCreateTs(now);
+        author.setUpdateTs(now);
         Author result = this.authorRepository.save(author);
         logger.info("create {}", result);
         return result;
@@ -68,6 +73,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author save(Author author) {
+        author.setStatus(EntityStatus.UPDATE);
+        Date now = new Date();
+        author.setUpdateTs(now);
         Author result = this.authorRepository.save(author);
         logger.info("save {}", author);
         return result;

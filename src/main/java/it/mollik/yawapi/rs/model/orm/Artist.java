@@ -1,6 +1,7 @@
 package it.mollik.yawapi.rs.model.orm;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Locale;
 import java.util.StringJoiner;
 
@@ -14,6 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import org.apache.commons.lang3.StringUtils;
+
+import it.mollik.yawapi.rs.model.EntityStatus;
 
 @MappedSuperclass
 @JsonIdentityInfo(generator =  ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -29,20 +32,32 @@ public class Artist implements Serializable{
     @Column(name = "bio", length = 1000)
     private String bio;
 
-
     @Column(name = "country", nullable = false)
     private Locale country;
 
+    @Column(name="create_ts", nullable = false)
+    private Date createTs;
+
+    @Column(name="update_ts", nullable = false)
+    private Date updateTs;
+
+    @Column(name = "status", nullable = false)
+    private EntityStatus status;
+
     public Artist() {
-        this(StringUtils.EMPTY, Locale.ITALY);
+        this(StringUtils.EMPTY, Locale.ITALY, EntityStatus.INSERT);        
     }
 
     public Artist(String name, Locale country) {
-        this.name = name;
-        this.country = country;
+        this(name, country, EntityStatus.INSERT);
     }
 
-    
+    public Artist(String name, Locale country, EntityStatus status) {
+        this.name = name;
+        this.country = country;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -74,12 +89,54 @@ public class Artist implements Serializable{
     public void setCountry(Locale country) {
         this.country = country;
     }
+
+    
+    /**
+     * @return Date return the createTs
+     */
+    public Date getCreateTs() {
+        return createTs;
+    }
+
+    /**
+     * @param createTs the createTs to set
+     */
+    public void setCreateTs(Date createTs) {
+        this.createTs = createTs;
+    }
+
+    /**
+     * @return Date return the updateTs
+     */
+    public Date getUpdateTs() {
+        return updateTs;
+    }
+
+    /**
+     * @param updateTs the updateTs to set
+     */
+    public void setUpdateTs(Date updateTs) {
+        this.updateTs = updateTs;
+    }
+    
+    /**
+     * @return EntityStatus return the status
+     */
+    public EntityStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(EntityStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         String artistId = getId() != null ? this.getId().toString() : StringUtils.EMPTY;
         return new StringJoiner(StringUtils.EMPTY).add("Artist: [").add("artistId: ").add(artistId).add(", name: ").add(this.getName()).add("]").toString();
     }
-
-
 
 }
