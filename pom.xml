@@ -18,8 +18,8 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.source>11</maven.compiler.source>
 		<java.version>11</java.version>
-        <resteasy.version>3.12.1.Final</resteasy.version>
-        <keycloak.version>11.0.2</keycloak.version>
+		<resteasy.version>3.12.1.Final</resteasy.version>
+		<keycloak.version>11.0.2</keycloak.version>
 	</properties>
 	<dependencies>
 		<!-- 	<dependency>
@@ -189,4 +189,30 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+	<profiles>
+		<profile>
+			<id>github</id>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>https://repo1.maven.org/maven2</url>
+				</repository>
+				<repository>
+					<id>github</id>
+					<url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+
+	<servers>
+		<server>
+			<id>github</id>
+			<username>USERNAME</username>
+			<password>TOKEN</password>
+		</server>
+	</servers>
 </project>
