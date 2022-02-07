@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "33da1ad5-4d9e-40a4-9887-20aad1b115dd",
+		"name": "YaWAPI.rs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"authors\" : [],\r\n    \"requestKey\": {\r\n        \"correlationId\": \"{{$guid}}\",\r\n        \"requestId\": \"{{$guid}}\",\r\n        \"timestamp\": {{$timestamp}},\r\n        \"language\":\"{{$randomLocale}}\",\r\n        \"ipAddress\": \"{{$randomIP}}\",\r\n        \"jsessionId\":\"\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{target.host}}:{{target.port}}/author/list",
+					"protocol": "http",
+					"host": [
+						"{{target.host}}"
+					],
+					"port": "{{target.port}}",
+					"path": [
+						"author",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by Name",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"authors\" : [ {\r\n            \"id\": 1,\r\n            \"name\": \"Italo Calvino\"\r\n        }],\r\n    \"requestKey\": {\r\n        \"correlationId\": {{$guid}},\r\n        \"requestId\":{{$guid}},\r\n        \"timestamp\": {{$timestamp}},\r\n        \"language\":\"{{$randomLocale}}\",\r\n        \"ipAddress\": \"{{$randomIP}}\",\r\n        \"jsessionId\":\"\"\r\n    }\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{target.host}}:{{target.port}}/author/find?name=Italo Calvino",
+					"protocol": "http",
+					"host": [
+						"{{target.host}}"
+					],
+					"port": "{{target.port}}",
+					"path": [
+						"author",
+						"find"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Italo Calvino"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"authors\" : [{\r\n        \"name\": \"Dante Alighieri\",\r\n        \"country\": \"it.IT\"            \r\n    }],\r\n    \"requestKey\": {\r\n        \"correlationId\": \"{{$guid}}\",\r\n        \"requestId\": \"{{$guid}}\",\r\n        \"timestamp\": {{$isoTimestamp}},\r\n        \"language\":\"{{$randomLocale}}\",\r\n        \"ipAddress\": \"{{$randomIP}}\",\r\n        \"jsessionId\":\"\"\r\n    }\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{target.host}}:{{target.port}}/author/create",
+					"protocol": "http",
+					"host": [
+						"{{target.host}}"
+					],
+					"port": "{{target.port}}",
+					"path": [
+						"author",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "12345678",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "target.host",
+			"value": "localhost"
+		},
+		{
+			"key": "target.port",
+			"value": "8080"
+		}
+	]
+}
