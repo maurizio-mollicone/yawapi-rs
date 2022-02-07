@@ -25,6 +25,7 @@ import it.mollik.yawapi.rs.controller.BaseController;
 @AutoConfigureRestDocs
 @ActiveProfiles(value = "test")
 public class BaseControllerTest {
+	
     @Value("${yawapi.basic.auth.user:admin}")
 	private String userName;
 	
@@ -34,14 +35,6 @@ public class BaseControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    
-//     @BeforeEach
-//     public void setup(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
-//         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-//             .apply(documentationConfiguration(restDocumentation)) 
-//             .build();
-//   }
-  
     @Test
 	public void shouldReturnDefaultMessage() throws Exception {
 		this.mockMvc.perform(get("/").with(csrf()).with(user(this.userName).password(this.password))).andDo(print()).andExpect(status().isOk())
