@@ -8,6 +8,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import it.mollik.yawapi.rs.exceptions.EntityNotFoundException;
@@ -26,7 +29,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<Author> findByName(String authorName) throws EntityNotFoundException {
         List<Author> authors = new ArrayList<>();
-        this.authorRepository.findByArtistName(authorName).forEach(authors::add);
+        this.authorRepository.findByName(authorName).forEach(authors::add);
         if (authors.isEmpty()) {
             logger.error("EntityNotFoundException {}", authorName);
             throw new EntityNotFoundException(String.format("EntityNotFoundException %s", authorName));
@@ -39,18 +42,19 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> list() throws EntityNotFoundException {
         
         List<Author> authors = new ArrayList<>();
-        this.authorRepository.findAll().forEach(authors::add);
+        Pageable sortedByName = PageRequest.of(0, 3, Sort.by("name"));
+        this.authorRepository.findAll(sortedByName).forEach(authors::add);
         if (authors.isEmpty()) {
             logger.error("EntityNotFoundException");
             throw new EntityNotFoundException(StringUtils.EMPTY);
         }
-        logger.info("list {} results", list().size());
+        logger.info("list {} results", authors.size());
 
         return authors;
     }
 
     @Override
-    public Author findByArtistId(Integer artistId) throws EntityNotFoundException {
+    public Author findById(Integer artistId) throws EntityNotFoundException {
         return this.authorRepository.findById(artistId).orElseThrow(() -> new EntityNotFoundException(artistId.toString()));
     }
 

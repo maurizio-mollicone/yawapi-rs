@@ -15,7 +15,7 @@ public interface AuthorService {
 
     public List<Author> list() throws EntityNotFoundException;
 
-    public Author findByArtistId(Integer artistId) throws EntityNotFoundException;
+    public Author findById(Integer artistId) throws EntityNotFoundException;
 
     public Author create(String authorName, Locale country);
 

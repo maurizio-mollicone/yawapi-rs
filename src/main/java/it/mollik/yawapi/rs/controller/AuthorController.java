@@ -42,7 +42,7 @@ public class AuthorController {
     @PutMapping(path = "/author/find", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public AuthorResponse findByName(@RequestBody AuthorRequest request) throws EntityNotFoundException {
         logger.info("/author/find {}" , request);
-        List<Author> authors = this.authorService.findByName(request.getAuthors().get(0).getArtistName());
+        List<Author> authors = this.authorService.findByName(request.getAuthors().get(0).getName());
         AuthorResponse response = new AuthorResponse(request.getRequestKey(), 0, "OK", authors);
         logger.info("/author/find OK {} elemts" , authors.size());
         return response;
@@ -51,7 +51,7 @@ public class AuthorController {
     @PostMapping(path = "/author/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public AuthorResponse create(@RequestBody AuthorRequest request) {
-        Author author = this.authorService.create(request.getAuthors().get(0).getArtistName(), request.getAuthors().get(0).getArtistCountry());
+        Author author = this.authorService.create(request.getAuthors().get(0).getName(), request.getAuthors().get(0).getCountry());
         List<Author> authors = new ArrayList<>();
         authors.add(author);
         AuthorResponse response = new AuthorResponse(request.getRequestKey(), 0, "OK", authors);

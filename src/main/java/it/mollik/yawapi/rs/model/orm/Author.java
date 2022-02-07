@@ -1,35 +1,43 @@
 package it.mollik.yawapi.rs.model.orm;
 
+import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "author")
 public class Author extends Artist {
     
-    @ManyToMany(mappedBy = "authors")
-    @JsonIgnore
-    private Set<Book> books;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "book_authors", joinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id"))
+    private List<Book> books;
 
     public Author() {
         super();   
     }
 
-
-    public Author(String name, Locale country) {
-        super(name, country);
+    public Author(String authorName, Locale authorCountry) {
+        super(authorName, authorCountry);
     }
-    public Set<Book> getBooks() {
+
+
+    /**
+     * @return List<Book> return the books
+     */
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    /**
+     * @param books the books to set
+     */
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
-
 
 }

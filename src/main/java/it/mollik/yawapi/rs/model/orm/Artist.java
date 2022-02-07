@@ -10,61 +10,76 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import org.apache.commons.lang3.StringUtils;
 
 @MappedSuperclass
+@JsonIdentityInfo(generator =  ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Artist implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "artist_id")
-    private Integer artistId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "artist_name", length = 500, nullable = false)
-    private String artistName;
+    @Column(name = "name", length = 500, nullable = false)
+    private String name;
 
-    @Column(name = "artist_bio", length = 1000)
-    private String artistBio;
+    @Column(name = "bio", length = 1000)
+    private String bio;
 
-    @Column(name = "artist_country", nullable = false)
-    private Locale artistCountry;
+
+    @Column(name = "country", nullable = false)
+    private Locale country;
 
     public Artist() {
         this(StringUtils.EMPTY, Locale.ITALY);
     }
 
     public Artist(String name, Locale country) {
-        this.artistName = name;
-        this.artistCountry = country;
+        this.name = name;
+        this.country = country;
     }
 
-    public Integer getArtistId() {
-        return artistId;
+    
+    public Integer getId() {
+        return id;
     }
 
-    public void setArtistId(Integer artistId) {
-        this.artistId = artistId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getArtistName() {
-        return artistName;
+    public String getName() {
+        return name;
     }
 
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Locale getArtistCountry() {
-        return artistCountry;
+    public String getBio() {
+        return bio;
     }
 
-    public void setArtistCountry(Locale artistCountry) {
-        this.artistCountry = artistCountry;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
+    public Locale getCountry() {
+        return country;
+    }
+
+    public void setCountry(Locale country) {
+        this.country = country;
+    }
     @Override
     public String toString() {
-        String id = this.getArtistId() != null ? this.getArtistId().toString() : StringUtils.EMPTY;
-        return new StringJoiner(StringUtils.EMPTY).add("Artist: [").add("artistId: ").add(id).add(", name: ").add(this.getArtistName()).add("]").toString();
+        String artistId = getId() != null ? this.getId().toString() : StringUtils.EMPTY;
+        return new StringJoiner(StringUtils.EMPTY).add("Artist: [").add("artistId: ").add(artistId).add(", name: ").add(this.getName()).add("]").toString();
     }
+
+
+
 }

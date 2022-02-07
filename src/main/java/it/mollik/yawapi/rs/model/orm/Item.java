@@ -18,9 +18,8 @@ import it.mollik.yawapi.rs.model.ItemType;
 public class Item implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "item_id")
-    private Integer itemId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
    
     @Column(name = "title")
     private String title;
@@ -34,12 +33,12 @@ public class Item implements Serializable {
     @Column(name = "item_type")
     private ItemType itemType;
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setId(Integer itemId) {
+        this.id = itemId;
     }
 
     public String getTitle() {
@@ -76,8 +75,8 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {        
-        String id = this.getItemId() != null ? this.getItemId().toString() : StringUtils.EMPTY;
-        return new StringJoiner(StringUtils.EMPTY).add("Item [").add("itemId: ").add(id).add(", title: ").add(this.getTitle()).add("]").toString();
+        String itemId = this.getId() != null ? this.getId().toString() : StringUtils.EMPTY;
+        return new StringJoiner(StringUtils.EMPTY).add("Item [").add("itemId: ").add(itemId).add(", title: ").add(this.getTitle()).add("]").toString();
     }
 
 }
