@@ -34,5 +34,6 @@ jobs:
       with:
         name: Package
         path: staging
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
